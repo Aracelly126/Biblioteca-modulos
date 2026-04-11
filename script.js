@@ -453,8 +453,8 @@ function createResourceCard(resource, index) {
     <div class="book-info">
       <p class="book-title">${resource.title}</p>
       <p class="book-type">
-        <i class="fas ${isVideo ? "fa-circle-play" : "fa-external-link-alt"}"></i>
-        ${isVideo ? "Reproducir aqui" : "Abrir recurso"}
+        <i class="fas ${isVideo ? "fa-external-link-alt" : "fa-external-link-alt"}"></i>
+        ${isVideo ? "Abrir desde Drive" : "Abrir recurso"}
       </p>
     </div>
   `;
@@ -476,26 +476,10 @@ function closeInlineVideo() {
 }
 
 function openInlineVideo(resourceTitle, videoLink) {
-  const inlinePlayer = document.getElementById("inlinePlayer");
-  const inlineVideo = document.getElementById("inlineVideo");
-  const inlinePlayerTitle = document.getElementById("inlinePlayerTitle");
-
-  if (!inlinePlayer || !inlineVideo || !inlinePlayerTitle) return;
-
-  if (activeInlineVideoLink && activeInlineVideoLink !== videoLink) {
-    inlineVideo.pause();
-  }
-
-  inlinePlayerTitle.textContent = resourceTitle || "Reproductor de video";
-  inlineVideo.src = videoLink;
-  inlinePlayer.style.display = "block";
-  activeInlineVideoLink = videoLink;
-
-  inlineVideo.play().catch(() => {
-    // Mantener controles visibles cuando el navegador bloquea autoplay.
-  });
-
-  inlinePlayer.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Abre la carpeta de Drive en una ventana flotante
+  // Si en el futuro tienes IDs de archivo específicos, puedes cambiar esto
+  // para usar URLs de reproducción directa: https://drive.google.com/file/d/ID/preview
+  window.open(videoLink, 'driveFolder', 'width=1000,height=700,resizable=yes,scrollbars=yes');
 }
 
 function renderBooks(list) {
