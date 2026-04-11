@@ -4,10 +4,9 @@ const MODULO_2_FOLDER = "https://drive.google.com/drive/folders/1p_cVEg96SGgEVce
 const MODULO_3_FOLDER = "https://drive.google.com/drive/folders/11W5KKlkWoVVA5g-vfTszA6W6cDh4KAXx?usp=drive_link";
 const MODULO_4_FOLDER = "https://drive.google.com/drive/folders/1Pny6oK8RqzrPXlkL8gqrNZWhlzbTeV-U?usp=drive_link";
 
-const LOCAL_MODULO_1 = "MODULO 1. MICROORGANISMOS-20260411T164329Z-3-001/MODULO 1. MICROORGANISMOS";
-const LOCAL_MODULO_2 = "MODULO 2. HIGIENE Y SANEAMIENTO-20260411T164501Z-3-001/MODULO 2. HIGIENE Y SANEAMIENTO";
-const LOCAL_MODULO_3 = "MODULO 3. BPM-20260411T164453Z-3-001/MODULO 3. BPM";
-const LOCAL_MODULO_4 = "MODULO 4. Biblioteca Audiovisual Científica-20260411T164500Z-3-001/MODULO 4. Biblioteca Audiovisual Científica";
+// Videos cargados desde Drive - usa las carpetas de módulos ya definidas arriba
+// Para reproducción directa de videos específicos, usa: https://drive.google.com/file/d/FILE_ID/view
+// O descarga desde: https://drive.google.com/file/d/FILE_ID/edit
 
 const modules = [
   {
@@ -52,38 +51,38 @@ const moduleResources = {
   microorganismos: [
     {
       title: "1.1 Introducción Microbiología",
-      link: `${LOCAL_MODULO_1}/1.1 Introducción Microbiología.mp4`,
+      link: `${MODULO_1_FOLDER}`,
       type: "MP4",
       image: "img/microbioligia.jpg"
     },
     {
       title: "1.2. Bacterias, Virus y Hongos",
-      link: `${LOCAL_MODULO_1}/1.2 Bacterias, Virus y Hongos.mp4`,
+      link: `${MODULO_1_FOLDER}`,
       type: "MP4",
       image: "img/bacterias.jpg"
     },
     {
       title: "1.3. CHATTO",
-      link: `${LOCAL_MODULO_1}/1.3 CHATTO.mp4`,
+      link: `${MODULO_1_FOLDER}`,
       type: "MP4",
       image: "img/Madigan.jpg"
     },
     {
       title: "1.4. ETAs",
-      link: `${LOCAL_MODULO_1}/1.4 ETAs.mp4`,
+      link: `${MODULO_1_FOLDER}`,
       type: "MP4",
       image: "img/ETAS.jpg"
     },
     {
       title: "1.5. Brotes epidemiológicos",
-      link: `${LOCAL_MODULO_1}/1.5 Brotes epidemiológicos.mp4`,
+      link: `${MODULO_1_FOLDER}`,
       type: "MP4",
       image: "img/brotes.jpg",
       coverPosition: "72% center"
     },
     {
       title: "Madigan, Michael T. - Brock. Biología de los microorganismos",
-      link: `${LOCAL_MODULO_1}/Madigan, Michael T. - Brock. Biologia de los microorganismos-Pearson Educación (2015).pdf`,
+      link: `${MODULO_1_FOLDER}`,
       type: "PDF",
       image: "img/Madigan.jpg"
     }
@@ -91,37 +90,37 @@ const moduleResources = {
   "higiene-saneamiento": [
     {
       title: "2.1 Higiene Personal",
-      link: `${LOCAL_MODULO_2}/2.1 Higiene Personal.mp4`,
+      link: `${MODULO_2_FOLDER}`,
       type: "MP4",
       image: "img/higiene personal m2.jpg"
     },
     {
       title: "2.2 Lavado de Manos",
-      link: `${LOCAL_MODULO_2}/2.2 Lavado de Manos.mp4`,
+      link: `${MODULO_2_FOLDER}`,
       type: "MP4",
       image: "img/lavado manos m2.jpg"
     },
     {
       title: "2.3 Limpieza y Desinfección",
-      link: `${LOCAL_MODULO_2}/2.3 Limpieza y Desinfección.mp4`,
+      link: `${MODULO_2_FOLDER}`,
       type: "MP4",
       image: "img/desinfeccion m2.jpeg"
     },
     {
       title: "2.4 Manejo y Dosificación de Químicos",
-      link: `${LOCAL_MODULO_2}/2.4 Manejo y Dosificación de Químicos.mp4`,
+      link: `${MODULO_2_FOLDER}`,
       type: "MP4",
       image: "img/dosificacion m2.jpg"
     },
     {
       title: "2.5 Cronogramas de LYD",
-      link: `${LOCAL_MODULO_2}/2.5 Cronogramas de LYD.mp4`,
+      link: `${MODULO_2_FOLDER}`,
       type: "MP4",
       image: "img/cronograma m2.png"
     },
     {
       title: "Guía de buenas prácticas para la limpieza y desinfección en la industria alimentaria",
-      link: `${LOCAL_MODULO_2}/Guia de buenas practicas para la limpieza y desinfección en la industria alimentaria.pdf`,
+      link: `${MODULO_2_FOLDER}`,
       type: "PDF",
       image: "img/guia buenas practicas m2.jpg"
     }
@@ -129,31 +128,31 @@ const moduleResources = {
   bpm: [
     {
       title: "3.1 Infraestructura y Diseño",
-      link: `${LOCAL_MODULO_3}/3.1 Infraestructura y Diseño.mp4`,
+      link: `${MODULO_3_FOLDER}`,
       type: "MP4",
       image: "img/infraestructira m3.jpg"
     },
     {
       title: "3.2 Mantenimiento y Limpieza de Equipos",
-      link: `${LOCAL_MODULO_3}/3.2 Mantenimiento y Limpieza de Equipos.mp4`,
+      link: `${MODULO_3_FOLDER}`,
       type: "MP4",
       image: "img/mantenimiento m3.jpg"
     },
     {
       title: "3.3 Manejo Integrado de Plagas",
-      link: `${LOCAL_MODULO_3}/3.3 Manejo Integrado de Plagas.mp4`,
+      link: `${MODULO_3_FOLDER}`,
       type: "MP4",
       image: "img/plagas m3.jpg"
     },
     {
       title: "NORMA-440",
-      link: `${LOCAL_MODULO_3}/NORMA-440.pdf`,
+      link: `${MODULO_3_FOLDER}`,
       type: "PDF",
       image: "img/440 m3.png"
     },
     {
       title: "RESOLUCIÓN-ARCSA-DE-2022-016-AKRG_Alimentos-procesados-2",
-      link: `${LOCAL_MODULO_3}/RESOLUCION-ARCSA-DE-2022-016-AKRG_Alimentos-procesados-2.pdf`,
+      link: `${MODULO_3_FOLDER}`,
       type: "PDF",
       image: "img/ARCSA m3 .png"
     }
@@ -161,49 +160,49 @@ const moduleResources = {
   "biblioteca-audiovisual": [
     {
       title: "El poder invisible de los microbios _ ZonaDocu",
-      link: `${LOCAL_MODULO_4}/El poder invisible de los microbios _ ZonaDocu.mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/microbios m4.png"
     },
     {
       title: "Azúcar y aditivos - El lado oscuro de la industria alimentaria",
-      link: `${LOCAL_MODULO_4}/Azúcar y aditivos - El lado oscuro de la industria alimentaria _ DW Documental.mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/azucares m4.jpg"
     },
     {
       title: "Salud e higiene de los empleados",
-      link: `${LOCAL_MODULO_4}/Salud e higiene de los empleados.mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/salud empelados m4.jpg"
     },
     {
       title: "MANEJO DE RESIDUOS (1)",
-      link: `${LOCAL_MODULO_4}/MANEJO DE RESIDUOS (1).mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/residuos m4.jpg"
     },
     {
       title: "Control de plagas en la industria de alimentos. Riesgos",
-      link: `${LOCAL_MODULO_4}/Control de plagas en la industria de alimentos. Riesgos para la salud. (1).mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/plagas alimentos m4.jpg"
     },
     {
       title: "Manipulación de pollo fresco (1)",
-      link: `${LOCAL_MODULO_4}/Manipulación de pollo fresco (1).mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/pollo m4.jpg"
     },
     {
       title: "Limpieza y desinfección",
-      link: `${LOCAL_MODULO_4}/Limpieza y desinfección.mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/desinfeccion m4.jpg"
     },
     {
       title: "Normas de higiene para el personal manipulador de alimentos",
-      link: `${LOCAL_MODULO_4}/Normas de higiene para el personal manipulador de alimentos. (1) (1).mp4`,
+      link: `${MODULO_4_FOLDER}`,
       type: "MP4",
       image: "img/manipulacion m4.jpg"
     }

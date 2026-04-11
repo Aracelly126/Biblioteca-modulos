@@ -1,0 +1,11 @@
+# Ignorar carpetas de módulos con videos (se cargan desde Drive)
+MODULO*/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Temporales
+*.tmp
+.vscode/
