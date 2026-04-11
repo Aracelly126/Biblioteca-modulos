@@ -1,12 +1,19 @@
 const ROOT_DRIVE_FOLDER = "https://drive.google.com/drive/folders/1EqhRak41WKeRigcrkxDjiDorUbf8ScPO?usp=drive_link";
-const MODULO_1_FOLDER = "https://drive.google.com/drive/folders/1-piCPZozC4ZySLLBipXTn_rC1VXMkhQ9?usp=drive_link";
-const MODULO_2_FOLDER = "https://drive.google.com/drive/folders/1p_cVEg96SGgEVce3VZlcMbqNch7p8RA_?usp=drive_link";
-const MODULO_3_FOLDER = "https://drive.google.com/drive/folders/11W5KKlkWoVVA5g-vfTszA6W6cDh4KAXx?usp=drive_link";
-const MODULO_4_FOLDER = "https://drive.google.com/drive/folders/1Pny6oK8RqzrPXlkL8gqrNZWhlzbTeV-U?usp=drive_link";
+const MODULO_1_FOLDER = "https://drive.google.com/drive/folders/1-piCPZozC4ZySLLBipXTn_rC1VXMkhQ9";
+const MODULO_2_FOLDER = "https://drive.google.com/drive/folders/1p_cVEg96SGgEVce3VZlcMbqNch7p8RA_";
+const MODULO_3_FOLDER = "https://drive.google.com/drive/folders/11W5KKlkWoVVA5g-vfTszA6W6cDh4KAXx";
+const MODULO_4_FOLDER = "https://drive.google.com/drive/folders/1Pny6oK8RqzrPXlkL8gqrNZWhlzbTeV-U";
 
-// Videos cargados desde Drive - usa las carpetas de módulos ya definidas arriba
-// Para reproducción directa de videos específicos, usa: https://drive.google.com/file/d/FILE_ID/view
-// O descarga desde: https://drive.google.com/file/d/FILE_ID/edit
+// Función para generar URL de búsqueda en Drive por nombre de archivo
+function generateDriveSearchUrl(folderUrl, filename) {
+  const folderId = folderUrl.match(/folders\/([a-zA-Z0-9_-]+)/)?.[1];
+  if (!folderId) return folderUrl;
+  
+  // Elimina extensión del nombre para la búsqueda
+  const searchTerm = filename.replace(/\.(mp4|pdf|mov|avi)$/i, '');
+  
+  return `https://drive.google.com/drive/folders/${folderId}?q=${encodeURIComponent(searchTerm)}`;
+}
 
 const modules = [
   {
@@ -476,10 +483,19 @@ function closeInlineVideo() {
 }
 
 function openInlineVideo(resourceTitle, videoLink) {
-  // Abre la carpeta de Drive en una ventana flotante
-  // Si en el futuro tienes IDs de archivo específicos, puedes cambiar esto
-  // para usar URLs de reproducción directa: https://drive.google.com/file/d/ID/preview
-  window.open(videoLink, 'driveFolder', 'width=1000,height=700,resizable=yes,scrollbars=yes');
+  // Obtiene la carpeta del módulo activo y genera URL de búsqueda
+  let moduleFolder = MODULO_1_FOLDER;
+  
+  if (activeModuleSlug === "microorganismos") moduleFolder = MODULO_1_FOLDER;
+  else if (activeModuleSlug === "higiene-saneamiento") moduleFolder = MODULO_2_FOLDER;
+  else if (activeModuleSlug === "bpm") moduleFolder = MODULO_3_FOLDER;
+  else if (activeModuleSlug === "biblioteca-audiovisual") moduleFolder = MODULO_4_FOLDER;
+  
+  // Genera URL de búsqueda por nombre del video
+  const searchUrl = generateDriveSearchUrl(moduleFolder, resourceTitle);
+  
+  // Abre en ventana flotante
+  window.open(searchUrl, 'driveVideo', 'width=1200,height=800,resizable=yes,scrollbars=yes');
 }
 
 function renderBooks(list) {
