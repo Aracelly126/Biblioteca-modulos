@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contenido del Módulo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body data-page="module">
+
+  <header class="header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="logo-wrapper">
+        <img src="Innova Food.jpeg" alt="Logo" class="logo" />
+      </div>
+      <div class="header-text">
+        <h1 class="header-title" id="moduleTitle">Biblioteca Institucional</h1>
+        <h2 class="header-subtitle" id="moduleSubtitle">Innova Food</h2>
+        <p class="header-desc" id="moduleDesc">Recursos académicos en ciencia y tecnología alimenta</p>
+      </div>
+    </div>
+    <div class="header-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#f5f0e8"/>
+      </svg>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <div class="module-nav">
+      <a class="back-link" href="index.html">
+        <i class="fas fa-arrow-left"></i>
+        Volver a módulos
+      </a>
+      <a class="drive-link" id="moduleDriveLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none">
+        <i class="fas fa-folder-open"></i>
+        Abrir carpeta en Drive
+      </a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item">
+        <i class="fas fa-book-open"></i>
+        <span><strong id="total-books">0</strong> recursos disponibles</span>
+      </div>
+      <div class="stat-item">
+        <i class="fas fa-folder-tree"></i>
+        <span id="moduleNameBadge">Módulo</span>
+      </div>
+    </div>
+
+    <div class="search-wrapper">
+      <i class="fas fa-search search-icon"></i>
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Buscar recurso por título..."
+        oninput="filterBooks()"
+      />
+      <button class="clear-btn" onclick="clearSearch()" id="clearBtn" style="display:none">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="results-info" id="resultsInfo"></div>
+  </section>
+
+  <section class="inline-player" id="inlinePlayer" style="display:none" aria-live="polite">
+    <div class="inline-player-header">
+      <h3 class="inline-player-title" id="inlinePlayerTitle">Reproductor de video</h3>
+      <button class="inline-player-close" id="inlinePlayerClose" type="button" aria-label="Cerrar reproductor">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <video id="inlineVideo" class="inline-video" controls preload="metadata"></video>
+    <p class="inline-player-help">Puedes usar los controles para pausar, adelantar o ajustar el volumen del video.</p>
+  </section>
+
+  <main class="library-grid" id="libraryGrid"></main>
+
+  <div class="no-results" id="noResults" style="display:none">
+    <i class="fas fa-search fa-3x"></i>
+    <p>No se encontraron recursos con ese título.</p>
+    <button onclick="clearSearch()">Ver todos los recursos</button>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <img src="Innova Food.jpeg" alt="Logo" class="footer-logo" />
+      <div class="footer-text">
+        <p class="footer-title">Biblioteca Modular</p>
+        <p class="footer-copy">&copy; 2026 · Biblioteca Institucional · Todos los derechos reservados</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
