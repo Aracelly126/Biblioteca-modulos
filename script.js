@@ -680,18 +680,12 @@ function setupModulePage() {
   const desc = document.getElementById("moduleDesc");
   const badge = document.getElementById("moduleNameBadge");
   const totalBooks = document.getElementById("total-books");
-  const driveLink = document.getElementById("moduleDriveLink");
 
   if (title) title.textContent = "Biblioteca Institucional";
   if (subtitle) subtitle.textContent = "Innova Food";
   if (desc) desc.textContent = "Recursos académicos en ciencia y tecnología alimenta";
   if (badge) badge.textContent = selectedModule.subtitle;
   if (totalBooks) totalBooks.textContent = resources.length;
-
-  if (driveLink && selectedModule.driveFolder) {
-    driveLink.href = selectedModule.driveFolder;
-    driveLink.style.display = "inline-flex";
-  }
 
   renderBooks(resources);
 

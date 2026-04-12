@@ -301,8 +301,7 @@ body[data-page="module"] .results-info {
   margin-top: 0;
 }
 
-.back-link,
-.drive-link {
+.back-link {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -321,16 +320,6 @@ body[data-page="module"] .results-info {
 
 .back-link:hover {
   background: #e5dac0;
-}
-
-.drive-link {
-  color: var(--white);
-  background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
-}
-
-.drive-link:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
 }
 
 .inline-player {
