@@ -375,12 +375,20 @@ body[data-page="module"] .results-info {
 }
 
 .inline-video {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  margin: 0 auto;
   display: block;
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   border: 1px solid var(--cream-dark);
-  background: #000;
+  background: transparent;
   max-height: 72vh;
+}
+
+.inline-drive-frame {
+  width: min(100%, 1100px);
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 .inline-player-help {
@@ -492,6 +500,7 @@ body[data-page="module"] .results-info {
   padding: 0 20px;
   display: flex;
   flex-direction: column;
+  flex: 1;
   gap: 8px;
 }
 
@@ -516,7 +525,8 @@ body[data-page="module"] .results-info {
 }
 
 .module-cta {
-  margin-top: 6px;
+  margin-top: auto;
+  padding-top: 6px;
   font-size: 12px;
   font-weight: 700;
   color: var(--green-dark);
@@ -637,6 +647,7 @@ body[data-page="module"] .results-info {
   line-height: 1.45;
   color: var(--text-dark);
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;

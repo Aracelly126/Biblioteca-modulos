@@ -58,38 +58,38 @@ const moduleResources = {
   microorganismos: [
     {
       title: "1.1 Introducción Microbiología",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/1BbYfMuyABRr5x6IHG_wITV1NdFXzw9da/view?usp=drive_link",
       type: "MP4",
       image: "img/microbioligia.jpg"
     },
     {
       title: "1.2. Bacterias, Virus y Hongos",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/19kcpAm_NFIzCuVvnyH0CQice3Sn4RqCd/view?usp=drive_link",
       type: "MP4",
       image: "img/bacterias.jpg"
     },
     {
       title: "1.3. CHATTO",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/1p_PKaHBCAbMcZCp6zBUnSlkvXiYiA5gC/view?usp=drive_link",
       type: "MP4",
       image: "img/Madigan.jpg"
     },
     {
       title: "1.4. ETAs",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/1S2i4zUC_mLI-Jn6Pu1Q3DrIVbVnQqx5d/view?usp=drive_link",
       type: "MP4",
       image: "img/ETAS.jpg"
     },
     {
       title: "1.5. Brotes epidemiológicos",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/1srf2R1MByDAuBPLHQjoMsJfl8187C_2-/view?usp=drive_link",
       type: "MP4",
       image: "img/brotes.jpg",
       coverPosition: "72% center"
     },
     {
       title: "Madigan, Michael T. - Brock. Biología de los microorganismos",
-      link: `${MODULO_1_FOLDER}`,
+      link: "https://drive.google.com/file/d/1OLsCwMRRG1pWsIqUThxYPfPPtfdBLMPo/view?usp=drive_link",
       type: "PDF",
       image: "img/Madigan.jpg"
     }
@@ -97,31 +97,31 @@ const moduleResources = {
   "higiene-saneamiento": [
     {
       title: "2.1 Higiene Personal",
-      link: `${MODULO_2_FOLDER}`,
+      link: "https://drive.google.com/file/d/1qBE3lE6RrnwriClf8cMxJ9MQI2AkP8IU/view?usp=drive_link",
       type: "MP4",
       image: "img/higiene personal m2.jpg"
     },
     {
       title: "2.2 Lavado de Manos",
-      link: `${MODULO_2_FOLDER}`,
+      link: "https://drive.google.com/file/d/12rPKa88kTlBrfNzHUR_sjxZ7C5i2aPhF/view?usp=drive_link",
       type: "MP4",
       image: "img/lavado manos m2.jpg"
     },
     {
       title: "2.3 Limpieza y Desinfección",
-      link: `${MODULO_2_FOLDER}`,
+      link: "https://drive.google.com/file/d/10uT1TnmQ7t0NuQIYUJFQ_yynYhuGKGRY/view?usp=drive_link",
       type: "MP4",
       image: "img/desinfeccion m2.jpeg"
     },
     {
       title: "2.4 Manejo y Dosificación de Químicos",
-      link: `${MODULO_2_FOLDER}`,
+      link: "https://drive.google.com/file/d/1frLqZIUp-Al8dLGE9CncCYiOI_jmwlD8/view?usp=drive_link",
       type: "MP4",
       image: "img/dosificacion m2.jpg"
     },
     {
       title: "2.5 Cronogramas de LYD",
-      link: `${MODULO_2_FOLDER}`,
+      link: "https://drive.google.com/file/d/19uQrziH7ShfuYrBDALNoQ9EqY1Sgjr09/view?usp=drive_link",
       type: "MP4",
       image: "img/cronograma m2.png"
     },
@@ -135,31 +135,31 @@ const moduleResources = {
   bpm: [
     {
       title: "3.1 Infraestructura y Diseño",
-      link: `${MODULO_3_FOLDER}`,
+      link: "https://drive.google.com/file/d/1Z2fQ3emUixRresVBL4x3q4Xw-6cOf8pc/view?usp=drive_link",
       type: "MP4",
       image: "img/infraestructira m3.jpg"
     },
     {
       title: "3.2 Mantenimiento y Limpieza de Equipos",
-      link: `${MODULO_3_FOLDER}`,
+      link: "https://drive.google.com/file/d/1VTXmwe5WTbfJJvp3LgoYltsCPLg_IvrM/view?usp=drive_link",
       type: "MP4",
       image: "img/mantenimiento m3.jpg"
     },
     {
       title: "3.3 Manejo Integrado de Plagas",
-      link: `${MODULO_3_FOLDER}`,
+      link: "https://drive.google.com/file/d/1Zyv8tb4RQ9hHces3nne2lwJa26psIWLi/view?usp=drive_link",
       type: "MP4",
       image: "img/plagas m3.jpg"
     },
     {
       title: "NORMA-440",
-      link: `${MODULO_3_FOLDER}`,
+      link: "https://drive.google.com/file/d/1JHfyqQsmh47vjGAQzU3GzOWYejVU-HNb/view?usp=drive_link",
       type: "PDF",
       image: "img/440 m3.png"
     },
     {
       title: "RESOLUCIÓN-ARCSA-DE-2022-016-AKRG_Alimentos-procesados-2",
-      link: `${MODULO_3_FOLDER}`,
+      link: "https://drive.google.com/file/d/1gHcuvoBvf6gk0R_bjwMXuBPuGonG3U6O/view?usp=drive_link",
       type: "PDF",
       image: "img/ARCSA m3 .png"
     }
@@ -167,49 +167,49 @@ const moduleResources = {
   "biblioteca-audiovisual": [
     {
       title: "El poder invisible de los microbios _ ZonaDocu",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1BJTmGvXLAR3B79qU0m7sFM518tcps8GB/view?usp=drive_link",
       type: "MP4",
       image: "img/microbios m4.png"
     },
     {
       title: "Azúcar y aditivos - El lado oscuro de la industria alimentaria",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1BmETTy2eahJ4J8MT6kXja3FwOs9R37D_/view?usp=drive_link",
       type: "MP4",
       image: "img/azucares m4.jpg"
     },
     {
       title: "Salud e higiene de los empleados",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1GqbnusNdUK-2lLjzpDJw9VhXmYpz2kLS/view?usp=drive_link",
       type: "MP4",
       image: "img/salud empelados m4.jpg"
     },
     {
       title: "MANEJO DE RESIDUOS (1)",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1iIj6h9YotACgbsTZ1QxCDiMaEFZ8MQf-/view?usp=drive_link",
       type: "MP4",
       image: "img/residuos m4.jpg"
     },
     {
       title: "Control de plagas en la industria de alimentos. Riesgos",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1jttNWgY_ryvYuNVgSTHgJzHZpxPwe5ng/view?usp=drive_link",
       type: "MP4",
       image: "img/plagas alimentos m4.jpg"
     },
     {
       title: "Manipulación de pollo fresco (1)",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1m8Wf0cAkhP9gSbhrkH9Y3Sc33fTyLYke/view?usp=drive_link",
       type: "MP4",
       image: "img/pollo m4.jpg"
     },
     {
       title: "Limpieza y desinfección",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1m8Wf0cAkhP9gSbhrkH9Y3Sc33fTyLYke/view?usp=drive_link",
       type: "MP4",
       image: "img/desinfeccion m4.jpg"
     },
     {
       title: "Normas de higiene para el personal manipulador de alimentos",
-      link: `${MODULO_4_FOLDER}`,
+      link: "https://drive.google.com/file/d/1tzCu_UQjKPNAFzn206qn4_e7uSBa5atL/view?usp=drive_link",
       type: "MP4",
       image: "img/manipulacion m4.jpg"
     }
@@ -242,6 +242,38 @@ const topicStyles = {
 
 function getThumbnailUrl(fileId) {
   return `https://drive.google.com/thumbnail?id=${fileId}&sz=w400`;
+}
+
+function extractDriveFileId(url) {
+  if (!url) return "";
+
+  const fromPath = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)/)?.[1];
+  if (fromPath) return fromPath;
+
+  const fromParam = url.match(/[?&]id=([a-zA-Z0-9_-]+)/)?.[1];
+  if (fromParam) return fromParam;
+
+  return "";
+}
+
+function getInlinePlayableSource(resource) {
+  const rawLink = resource.link || "";
+  const customSrc = resource.videoSrc || "";
+  const source = customSrc || rawLink;
+
+  if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(source)) {
+    return { kind: "video", src: encodeURI(source) };
+  }
+
+  const driveFileId = resource.driveFileId || extractDriveFileId(rawLink);
+  if (driveFileId) {
+    return {
+      kind: "drive",
+      src: `https://drive.google.com/file/d/${driveFileId}/preview`
+    };
+  }
+
+  return null;
 }
 
 function normalizeText(value) {
@@ -340,6 +372,7 @@ function createModuleCard(module, index) {
   const card = document.createElement("a");
   card.className = "module-card";
   card.href = `index.html?modulo=${encodeURIComponent(module.slug)}`;
+  card.setAttribute("data-module-slug", module.slug);
   card.style.animationDelay = `${index * 0.04}s`;
   const moduleNumber = index + 1;
 
@@ -414,6 +447,7 @@ function createResourceCard(resource, index) {
   const rawLink = resource.link || "";
   const isVideo = (resource.type || "").toUpperCase() === "MP4" || /\.mp4$/i.test(rawLink);
   const isPdf = (resource.type || "").toUpperCase() === "PDF" || /\.pdf$/i.test(rawLink);
+  const inlineSource = getInlinePlayableSource(resource);
   const card = document.createElement("a");
   card.className = "book-card";
   card.href = isVideo ? "#" : encodedLink;
@@ -424,6 +458,8 @@ function createResourceCard(resource, index) {
   card.setAttribute("data-link", encodedLink);
   card.setAttribute("data-type", (resource.type || "PDF").toUpperCase());
   card.setAttribute("data-inline-video", String(isVideo));
+  card.setAttribute("data-video-kind", inlineSource?.kind || "");
+  card.setAttribute("data-video-src", inlineSource?.src || "");
   card.setAttribute("data-title", resource.title.toLowerCase());
   card.style.animationDelay = `${index * 0.04}s`;
 
@@ -461,7 +497,7 @@ function createResourceCard(resource, index) {
       <p class="book-title">${resource.title}</p>
       <p class="book-type">
         <i class="fas ${isVideo ? "fa-external-link-alt" : "fa-external-link-alt"}"></i>
-        ${isVideo ? "Abrir desde Drive" : "Abrir recurso"}
+        ${isVideo ? (inlineSource ? "Reproducir en esta página" : "Buscar en Drive") : "Abrir recurso"}
       </p>
     </div>
   `;
@@ -472,17 +508,83 @@ function createResourceCard(resource, index) {
 function closeInlineVideo() {
   const inlinePlayer = document.getElementById("inlinePlayer");
   const inlineVideo = document.getElementById("inlineVideo");
+  const inlineDriveFrame = document.getElementById("inlineDriveFrame");
 
-  if (!inlinePlayer || !inlineVideo) return;
+  if (!inlinePlayer || !inlineVideo || !inlineDriveFrame) return;
 
   inlineVideo.pause();
   inlineVideo.removeAttribute("src");
   inlineVideo.load();
+  inlineVideo.style.display = "none";
+
+  inlineDriveFrame.removeAttribute("src");
+  inlineDriveFrame.style.display = "none";
+
   inlinePlayer.style.display = "none";
+  inlinePlayer.style.maxWidth = "1380px";
   activeInlineVideoLink = "";
 }
 
-function openInlineVideo(resourceTitle, videoLink) {
+function adjustInlinePlayerWidth(ratio = 16 / 9) {
+  const inlinePlayer = document.getElementById("inlinePlayer");
+  if (!inlinePlayer) return;
+
+  const safeRatio = Number.isFinite(ratio) && ratio > 0 ? ratio : 16 / 9;
+  const maxHeight = window.innerHeight * 0.72;
+  const widthByRatio = maxHeight * safeRatio;
+  const widthByViewport = Math.max(320, window.innerWidth - 48);
+  const finalWidth = Math.max(320, Math.min(1380, widthByRatio, widthByViewport));
+
+  inlinePlayer.style.maxWidth = `${Math.floor(finalWidth)}px`;
+}
+
+function openInlineVideo(resourceTitle, videoLink, inlineKind, inlineSrc) {
+  const inlinePlayer = document.getElementById("inlinePlayer");
+  const inlineVideo = document.getElementById("inlineVideo");
+  const inlineDriveFrame = document.getElementById("inlineDriveFrame");
+  const inlinePlayerTitle = document.getElementById("inlinePlayerTitle");
+
+  if (!inlinePlayer || !inlineVideo || !inlineDriveFrame || !inlinePlayerTitle) {
+    return;
+  }
+
+  if (inlineKind === "video" && inlineSrc) {
+    inlineDriveFrame.removeAttribute("src");
+    inlineDriveFrame.style.display = "none";
+
+    inlineVideo.src = inlineSrc;
+    inlineVideo.style.display = "block";
+    inlineVideo.onloadedmetadata = () => {
+      const ratio = inlineVideo.videoWidth && inlineVideo.videoHeight
+        ? inlineVideo.videoWidth / inlineVideo.videoHeight
+        : 16 / 9;
+      adjustInlinePlayerWidth(ratio);
+    };
+    adjustInlinePlayerWidth();
+    inlineVideo.load();
+    inlinePlayerTitle.textContent = resourceTitle;
+    inlinePlayer.style.display = "block";
+    inlinePlayer.scrollIntoView({ behavior: "smooth", block: "start" });
+    activeInlineVideoLink = videoLink;
+    return;
+  }
+
+  if (inlineKind === "drive" && inlineSrc) {
+    inlineVideo.pause();
+    inlineVideo.removeAttribute("src");
+    inlineVideo.load();
+    inlineVideo.style.display = "none";
+
+    inlineDriveFrame.src = inlineSrc;
+    inlineDriveFrame.style.display = "block";
+    adjustInlinePlayerWidth(16 / 9);
+    inlinePlayerTitle.textContent = resourceTitle;
+    inlinePlayer.style.display = "block";
+    inlinePlayer.scrollIntoView({ behavior: "smooth", block: "start" });
+    activeInlineVideoLink = videoLink;
+    return;
+  }
+
   // Obtiene la carpeta del módulo activo y genera URL de búsqueda
   let moduleFolder = MODULO_1_FOLDER;
   
@@ -612,10 +714,12 @@ function setupModulePage() {
 
       const titleNode = card.querySelector(".book-title");
       const videoLink = card.getAttribute("data-link") || "";
+      const inlineKind = card.getAttribute("data-video-kind") || "";
+      const inlineSrc = card.getAttribute("data-video-src") || "";
       const resourceTitle = titleNode ? titleNode.textContent.trim() : "Reproductor de video";
 
       if (videoLink) {
-        openInlineVideo(resourceTitle, videoLink);
+        openInlineVideo(resourceTitle, videoLink, inlineKind, inlineSrc);
       }
     });
   }
