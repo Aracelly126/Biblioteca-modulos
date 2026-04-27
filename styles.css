@@ -858,6 +858,41 @@ body[data-page="module"] .results-info {
   color: var(--text-light);
 }
 
+/* Contenedor del password con botón de ojo */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-mid);
+  font-size: 16px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+}
+
+.toggle-password:hover {
+  color: var(--green-light);
+}
+
+.toggle-password:active {
+  transform: scale(0.95);
+}
+
 .login-btn {
   padding: 13px 24px;
   background: linear-gradient(135deg, var(--green-mid) 0%, var(--green-light) 100%);
