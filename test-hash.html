@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.0/crypto-js.min.js"></script>
+</head>
+<body>
+  <h2>Prueba de Hash</h2>
+  <input type="text" id="password" placeholder="Ingresa contraseña" />
+  <button onclick="testHash()">Probar Hash</button>
+  <div id="result"></div>
+
+  <script>
+    function testHash() {
+      const password = document.getElementById("password").value;
+      const hash = CryptoJS.SHA256(password).toString();
+      document.getElementById("result").innerHTML = `
+        <p><strong>Contraseña:</strong> ${password}</p>
+        <p><strong>Hash generado:</strong> ${hash}</p>
+        <p><strong>Hash esperado:</strong> 6d29b7bf2cc2c7b141d60631278d9907fdf864ab7c84e396c43d34703f42f58c</p>
+        <p><strong>¿Coinciden?:</strong> ${hash === '6d29b7bf2cc2c7b141d60631278d9907fdf864ab7c84e396c43d34703f42f58c' ? '✓ SÍ' : '✗ NO'}</p>
+      `;
+      console.log("Hash:", hash);
+    }
+  </script>
+</body>
+</html>

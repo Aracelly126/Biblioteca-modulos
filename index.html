@@ -12,6 +12,40 @@
 </head>
 <body data-page="module">
 
+  <!-- Modal de Login -->
+  <div id="loginModal" class="login-modal">
+    <div class="login-container">
+      <div class="login-header">
+        <img src="Innova Food.jpeg" alt="Logo" class="login-logo" />
+        <h1>Plataforma Institucional</h1>
+        <p>Acceso Seguro</p>
+      </div>
+      
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="passwordInput">Contraseña:</label>
+          <input 
+            type="password" 
+            id="passwordInput" 
+            placeholder="Ingresa tu contraseña" 
+            required 
+            autocomplete="off"
+          />
+        </div>
+        
+        <button type="submit" class="login-btn">
+          <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+        </button>
+      </form>
+      
+      <div id="loginError" class="login-error" style="display:none;"></div>
+      
+      <div class="login-footer">
+        <p><i class="fas fa-lock"></i> Tu sesión está protegida</p>
+      </div>
+    </div>
+  </div>
+
   <header class="header">
     <div class="header-bg"></div>
     <div class="header-content">
@@ -23,6 +57,10 @@
         <h2 class="header-subtitle" id="moduleSubtitle">Innova Food G.C.</h2>
         <p class="header-desc" id="moduleDesc">Recursos académicos en ciencia y tecnología alimenta</p>
       </div>
+      <button class="logout-btn" onclick="logoutUser()" title="Cerrar sesión">
+        <i class="fas fa-sign-out-alt"></i>
+        <span>Cerrar Sesión</span>
+      </button>
     </div>
     <div class="header-wave">
       <svg viewBox="0 0 1440 80" preserveAspectRatio="none">

@@ -1,3 +1,135 @@
+/* =========================================
+   AUTENTICACIÓN Y SEGURIDAD
+   ========================================= */
+
+// Hash SHA-256 de la contraseña "BibliotecaInnovaSegura.GC"
+const CORRECT_PASSWORD_HASH = "6d29b7bf2cc2c7b141d60631278d9907fdf864ab7c84e396c43d34703f42f58c";
+
+// Función para generar hash SHA-256 usando Web Crypto API
+async function generateHash(password) {
+  try {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+  } catch (error) {
+    console.error("Error generando hash:", error);
+    return null;
+  }
+}
+
+// Función para verificar si el usuario está autenticado
+function isUserAuthenticated() {
+  return sessionStorage.getItem("bibliotecaAuthenticated") === "true";
+}
+
+// Función para autenticar al usuario
+async function authenticateUser(password) {
+  console.log("Autenticando con contraseña:", password);
+  
+  const inputHash = await generateHash(password);
+  console.log("Hash generado:", inputHash);
+  console.log("Hash esperado:", CORRECT_PASSWORD_HASH);
+  console.log("¿Coinciden?:", inputHash === CORRECT_PASSWORD_HASH);
+  
+  return inputHash === CORRECT_PASSWORD_HASH;
+}
+
+// Función para cerrar sesión
+function logoutUser() {
+  sessionStorage.removeItem("bibliotecaAuthenticated");
+  location.reload();
+}
+
+// Función para manejar el formulario de login
+async function handleLoginSubmit(event) {
+  console.log("Formulario enviado");
+  event.preventDefault();
+  
+  const passwordInput = document.getElementById("passwordInput");
+  const password = passwordInput.value;
+  const loginError = document.getElementById("loginError");
+  const loginBtn = document.querySelector(".login-btn");
+  
+  console.log("Password field value:", password);
+  
+  if (!password) {
+    loginError.textContent = "Por favor ingresa la contraseña.";
+    loginError.style.display = "block";
+    return;
+  }
+  
+  // Deshabilitar botón mientras se procesa
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Verificando...";
+  
+  try {
+    if (await authenticateUser(password)) {
+      console.log("Autenticación exitosa");
+      // Contraseña correcta
+      sessionStorage.setItem("bibliotecaAuthenticated", "true");
+      const modal = document.getElementById("loginModal");
+      modal.classList.add("hidden");
+      loginError.style.display = "none";
+      passwordInput.value = "";
+      console.log("Modal ocultado");
+    } else {
+      console.log("Autenticación fallida");
+      // Contraseña incorrecta
+      loginError.textContent = "Contraseña incorrecta. Intenta de nuevo.";
+      loginError.style.display = "block";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  } catch (error) {
+    console.error("Error en autenticación:", error);
+    loginError.textContent = "Error en la autenticación. Intenta de nuevo.";
+    loginError.style.display = "block";
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Iniciar Sesión';
+  }
+}
+
+// Inicializar login cuando el DOM esté listo
+function initializeLogin() {
+  console.log("Inicializando login...");
+  
+  const loginForm = document.getElementById("loginForm");
+  const loginModal = document.getElementById("loginModal");
+  const passwordInput = document.getElementById("passwordInput");
+  
+  console.log("Elementos encontrados:", { loginForm: !!loginForm, loginModal: !!loginModal, passwordInput: !!passwordInput });
+  
+  // Si ya está autenticado, ocultar el modal
+  if (isUserAuthenticated()) {
+    console.log("Usuario ya autenticado");
+    loginModal.classList.add("hidden");
+  } else {
+    console.log("Usuario no autenticado - mostrando login");
+    loginModal.classList.remove("hidden");
+    if (passwordInput) {
+      passwordInput.focus();
+    }
+  }
+  
+  // Manejar el envío del formulario
+  if (loginForm) {
+    loginForm.addEventListener("submit", handleLoginSubmit);
+    console.log("Event listener para submit registrado");
+  } else {
+    console.error("No se encontró el formulario de login");
+  }
+}
+
+// Iniciar cuando el DOM esté listo
+document.addEventListener("DOMContentLoaded", function() {
+  console.log("DOM Cargado - Inicializando autenticación");
+  initializeLogin();
+});
+
 const ROOT_DRIVE_FOLDER = "https://drive.google.com/drive/folders/1EqhRak41WKeRigcrkxDjiDorUbf8ScPO?usp=drive_link";
 const MODULO_1_FOLDER = "https://drive.google.com/drive/folders/1-piCPZozC4ZySLLBipXTn_rC1VXMkhQ9";
 const MODULO_2_FOLDER = "https://drive.google.com/drive/folders/1p_cVEg96SGgEVce3VZlcMbqNch7p8RA_";
