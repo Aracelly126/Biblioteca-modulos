@@ -4,6 +4,7 @@
 
 // Hash SHA-256 de la contraseña "BibliotecaInnovaSegura.GC"
 const CORRECT_PASSWORD_HASH = "6d29b7bf2cc2c7b141d60631278d9907fdf864ab7c84e396c43d34703f42f58c";
+const MODULE_FIVE_PASSWORD_HASH = "fb9e7177512519c040110a6a91b31334cb6f88d15ada4d76ed08fb874947f654";
 
 // Función para generar hash SHA-256 usando Web Crypto API
 async function generateHash(password) {
@@ -57,7 +58,79 @@ function togglePasswordVisibility() {
 // Función para cerrar sesión
 function logoutUser() {
   sessionStorage.removeItem("bibliotecaAuthenticated");
+  sessionStorage.removeItem("moduleFiveAuthenticated");
   location.reload();
+}
+
+function isModuleFiveAuthenticated() {
+  return sessionStorage.getItem("moduleFiveAuthenticated") === "true";
+}
+
+async function authenticateModuleFive(password) {
+  const inputHash = await generateHash(password);
+  return inputHash === MODULE_FIVE_PASSWORD_HASH;
+}
+
+function toggleModuleFivePasswordVisibility() {
+  const passwordInput = document.getElementById("moduleFivePasswordInput");
+  const toggleBtn = document.getElementById("toggleModuleFivePasswordBtn");
+  const icon = toggleBtn?.querySelector("i");
+  if (!passwordInput || !icon) return;
+
+  passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+  icon.classList.toggle("fa-eye");
+  icon.classList.toggle("fa-eye-slash");
+}
+
+function initializeModuleFiveAccess() {
+  const moduleFiveLoginModal = document.getElementById("moduleFiveLoginModal");
+  const moduleFivePasswordInput = document.getElementById("moduleFivePasswordInput");
+  if (!moduleFiveLoginModal) return;
+
+  const isModuleFive = new URLSearchParams(window.location.search).get("modulo") === "recetario-bares-escolares";
+  if (!isModuleFive || !isUserAuthenticated() || isModuleFiveAuthenticated()) {
+    moduleFiveLoginModal.classList.add("hidden");
+    return;
+  }
+
+  moduleFiveLoginModal.classList.remove("hidden");
+  moduleFivePasswordInput?.focus();
+}
+
+async function handleModuleFiveLoginSubmit(event) {
+  event.preventDefault();
+
+  const passwordInput = document.getElementById("moduleFivePasswordInput");
+  const loginError = document.getElementById("moduleFiveLoginError");
+  const loginBtn = document.querySelector("#moduleFiveLoginForm .login-btn");
+  const password = passwordInput?.value || "";
+  if (!passwordInput || !loginError || !loginBtn) return;
+
+  if (!password) {
+    loginError.textContent = "Ingresa la contraseña para continuar.";
+    loginError.style.display = "block";
+    return;
+  }
+
+  loginBtn.disabled = true;
+  loginBtn.textContent = "Verificando...";
+
+  try {
+    if (await authenticateModuleFive(password)) {
+      sessionStorage.setItem("moduleFiveAuthenticated", "true");
+      document.getElementById("moduleFiveLoginModal")?.classList.add("hidden");
+      loginError.style.display = "none";
+      passwordInput.value = "";
+    } else {
+      loginError.textContent = "Contraseña incorrecta. Intenta de nuevo.";
+      loginError.style.display = "block";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  } finally {
+    loginBtn.disabled = false;
+    loginBtn.innerHTML = '<i class="fas fa-lock"></i> Acceder';
+  }
 }
 
 // Función para manejar el formulario de login
@@ -91,6 +164,7 @@ async function handleLoginSubmit(event) {
       modal.classList.add("hidden");
       loginError.style.display = "none";
       passwordInput.value = "";
+      initializeModuleFiveAccess();
       console.log("Modal ocultado");
     } else {
       console.log("Autenticación fallida");
@@ -139,6 +213,9 @@ function initializeLogin() {
   } else {
     console.error("No se encontró el formulario de login");
   }
+
+  const moduleFiveLoginForm = document.getElementById("moduleFiveLoginForm");
+  moduleFiveLoginForm?.addEventListener("submit", handleModuleFiveLoginSubmit);
 }
 
 // Iniciar cuando el DOM esté listo
@@ -152,6 +229,40 @@ const MODULO_1_FOLDER = "https://drive.google.com/drive/folders/1-piCPZozC4ZySLL
 const MODULO_2_FOLDER = "https://drive.google.com/drive/folders/1p_cVEg96SGgEVce3VZlcMbqNch7p8RA_";
 const MODULO_3_FOLDER = "https://drive.google.com/drive/folders/11W5KKlkWoVVA5g-vfTszA6W6cDh4KAXx";
 const MODULO_4_FOLDER = "https://drive.google.com/drive/folders/1Pny6oK8RqzrPXlkL8gqrNZWhlzbTeV-U";
+const RECETARIO_IMAGE_FOLDER = "Presentación Gastronomía Simple Beige";
+const RECETARIO_COVER_FOLDER = "Portadas";
+const recipeCovers = {
+  1: `${RECETARIO_COVER_FOLDER}/Modulo 1.png`,
+  2: `${RECETARIO_COVER_FOLDER}/Menu 2.png`,
+  3: `${RECETARIO_COVER_FOLDER}/Modulo 3.jpg`,
+  4: `${RECETARIO_COVER_FOLDER}/Menu 4.png`,
+  5: `${RECETARIO_COVER_FOLDER}/Menu 5.png`,
+  6: `${RECETARIO_COVER_FOLDER}/Menu 6.png`,
+  7: `${RECETARIO_COVER_FOLDER}/Menu 7.jpg`,
+  8: `${RECETARIO_COVER_FOLDER}/Menu 8.jpg`,
+  9: `${RECETARIO_COVER_FOLDER}/Menu 9.jpg`,
+  10: `${RECETARIO_COVER_FOLDER}/Menu 10.jpg`,
+  11: `${RECETARIO_COVER_FOLDER}/Menu 11.webp`,
+  12: `${RECETARIO_COVER_FOLDER}/Menu 12.avif`,
+  13: `${RECETARIO_COVER_FOLDER}/12.png`,
+  14: `${RECETARIO_COVER_FOLDER}/Menu 14.jpg`,
+  15: `${RECETARIO_COVER_FOLDER}/Menu 15.png`,
+  16: `${RECETARIO_COVER_FOLDER}/Menu 16.jpg`,
+  17: `${RECETARIO_COVER_FOLDER}/Menu 17.jpg`,
+  18: `${RECETARIO_COVER_FOLDER}/Menu 18.webp`,
+  19: `${RECETARIO_COVER_FOLDER}/Menu 19.jpg`,
+  20: `${RECETARIO_COVER_FOLDER}/Menu 20.jpg`,
+  21: `${RECETARIO_COVER_FOLDER}/Menu 21.jpg`,
+  22: `${RECETARIO_COVER_FOLDER}/Menu 22.jpg`,
+  23: `${RECETARIO_COVER_FOLDER}/Menu 23.webp`,
+  24: `${RECETARIO_COVER_FOLDER}/Menu 24.jpg`,
+  25: `${RECETARIO_COVER_FOLDER}/Menu 25.jpg`,
+  26: `${RECETARIO_COVER_FOLDER}/Menu 26.jpg`,
+  27: `${RECETARIO_COVER_FOLDER}/Menu 27.avif`,
+  28: `${RECETARIO_COVER_FOLDER}/Menu 28.jpg`,
+  29: `${RECETARIO_COVER_FOLDER}/Menu 29.jpg`,
+  30: `${RECETARIO_COVER_FOLDER}/Menu 30.jpg`
+};
 
 // Función para generar URL de búsqueda en Drive por nombre de archivo
 function generateDriveSearchUrl(folderUrl, filename) {
@@ -200,8 +311,49 @@ const modules = [
     icon: "fa-photo-film",
     image: "img/modulo 4.jpg",
     driveFolder: MODULO_4_FOLDER
+  },
+  {
+    slug: "recetario-bares-escolares",
+    title: "MÓDULO 5. RECETARIO PARA BARES ESCOLARES",
+    subtitle: "Recetario para Bares Escolares",
+    description: "Recetas nutritivas con ingredientes, preparación y porciones para el servicio escolar.",
+    icon: "fa-utensils",
+    image: "portada modulo 5.webp"
   }
 ];
+
+const recipeNames = [
+  "Bistec de hígado", "Chochos con tostado", "Chaulafán de pollo", "Papa rellena",
+  "Tortitas de avena y espinaca", "Habas con queso", "Pinchos de frutas", "Quimbolito",
+  "Lasaña de espinacas", "Granola de quinua con yogurt", "Torta de maqueño", "Ceviche de pescado",
+  "Papa chaucha con pepa de sambo", "Tortilla de brócoli al horno", "Revuelto de quinua", "Pincho de carne",
+  "Majado de verde", "Mote pillo", "Tortilla de maíz", "Cevichoco de pollo",
+  "Empanadas de verde", "Hamburguesa de lentejas", "Tortillas de papa con ensalada", "Choclo con queso",
+  "Humitas de sal", "Muffins de quinua y pasas", "Budín de avena", "Maduro con queso",
+  "Arroz con leche", "Gelatina de plátano con naranja"
+];
+
+function createRecipeResources() {
+  return recipeNames.map((recipeName, recipeIndex) => {
+    const firstFileNumber = recipeIndex * 2 + 2;
+    const recipeImages = [
+      `${RECETARIO_IMAGE_FOLDER}/${firstFileNumber}.jpg`,
+      `${RECETARIO_IMAGE_FOLDER}/${firstFileNumber + 1}.jpg`
+    ];
+    const cover = recipeCovers[recipeIndex + 1];
+
+    return {
+      title: recipeName,
+      menuNumber: recipeIndex + 1,
+      link: cover || recipeImages[0],
+      type: "RECETA",
+      image: cover || recipeImages[0],
+      cover,
+      images: recipeImages,
+      kind: "recipe"
+    };
+  });
+}
 
 const moduleResources = {
   microorganismos: [
@@ -362,7 +514,8 @@ const moduleResources = {
       type: "MP4",
       image: "img/manipulacion m4.jpg"
     }
-  ]
+  ],
+  "recetario-bares-escolares": createRecipeResources()
 };
 
 let activeResources = [];
@@ -507,6 +660,10 @@ function getOrderFromTitle(title) {
 
 function sortResources(resources) {
   return [...resources].sort((a, b) => {
+    if (a.kind === "recipe" && b.kind === "recipe") {
+      return (a.menuNumber || 0) - (b.menuNumber || 0);
+    }
+
     const orderA = getOrderFromTitle(a.title);
     const orderB = getOrderFromTitle(b.title);
 
@@ -596,17 +753,24 @@ function createResourceCard(resource, index) {
   const rawLink = resource.link || "";
   const isVideo = (resource.type || "").toUpperCase() === "MP4" || /\.mp4$/i.test(rawLink);
   const isPdf = (resource.type || "").toUpperCase() === "PDF" || /\.pdf$/i.test(rawLink);
+  const isRecipeImage = resource.kind === "recipe";
   const inlineSource = getInlinePlayableSource(resource);
   const card = document.createElement("a");
   card.className = "book-card";
-  card.href = isVideo ? "#" : encodedLink;
-  if (!isVideo) {
+  card.href = isVideo || isRecipeImage ? "#" : encodedLink;
+  if (!isVideo && !isRecipeImage) {
     card.target = "_blank";
     card.rel = "noopener noreferrer";
   }
   card.setAttribute("data-link", encodedLink);
   card.setAttribute("data-type", (resource.type || "PDF").toUpperCase());
   card.setAttribute("data-inline-video", String(isVideo));
+  card.setAttribute("data-recipe-image", String(isRecipeImage));
+  const cardImages = isRecipeImage && resource.cover
+    ? [resource.cover, ...(resource.images || [])]
+    : (resource.images || [resource.image]);
+  card.setAttribute("data-recipe-images", isRecipeImage ? JSON.stringify(cardImages) : "");
+  card.setAttribute("data-recipe-detail-images", isRecipeImage ? JSON.stringify(resource.images || [resource.image]) : "");
   card.setAttribute("data-video-kind", inlineSource?.kind || "");
   card.setAttribute("data-video-src", inlineSource?.src || "");
   card.setAttribute("data-title", resource.title.toLowerCase());
@@ -632,8 +796,10 @@ function createResourceCard(resource, index) {
       />`
     : "";
 
+  const recipeNavigationHtml = "";
+
   card.innerHTML = `
-    <div class="book-cover-wrapper">
+    <div class="book-cover-wrapper${isRecipeImage ? " recipe-cover-wrapper" : ""}">
       ${pdfPreviewHtml}
       ${imageHtml}
       <div class="book-cover-fallback" style="display:${thumbUrl || pdfPreviewHtml ? "none" : "flex"}">
@@ -641,17 +807,77 @@ function createResourceCard(resource, index) {
         <span>${resource.title}</span>
       </div>
       <span class="book-badge">${resource.type || "PDF"}</span>
+      ${recipeNavigationHtml}
     </div>
     <div class="book-info">
-      <p class="book-title">${resource.title}</p>
+      <p class="book-title">${isRecipeImage ? `Menú ${resource.menuNumber}: ${resource.title}` : resource.title}</p>
       <p class="book-type">
-        <i class="fas ${isVideo ? "fa-external-link-alt" : "fa-external-link-alt"}"></i>
-        ${isVideo ? (inlineSource ? "Reproducir en esta página" : "Buscar en Drive") : "Abrir recurso"}
+        <i class="fas ${isRecipeImage ? "fa-book-open" : "fa-external-link-alt"}"></i>
+        ${isRecipeImage ? "Abrir recetario" : (isVideo ? (inlineSource ? "Reproducir en esta página" : "Buscar en Drive") : "Abrir recurso")}
       </p>
     </div>
   `;
 
   return card;
+}
+
+function openRecipeImage(title, images, imageIndex = 0) {
+  const viewer = document.getElementById("recipeViewer");
+  const viewerTitle = document.getElementById("recipeViewerTitle");
+  const viewerImage = document.getElementById("recipeViewerImage");
+  const viewerCounter = document.getElementById("recipeViewerCounter");
+  const normalizedImages = images?.length ? images : [];
+
+  if (!viewer || !viewerTitle || !viewerImage || !normalizedImages.length) return;
+
+  const safeIndex = Math.max(0, Math.min(imageIndex, normalizedImages.length - 1));
+  viewerTitle.textContent = title;
+  viewer.dataset.images = JSON.stringify(normalizedImages);
+  viewer.dataset.imageIndex = String(safeIndex);
+  viewerImage.src = normalizedImages[safeIndex];
+  viewerImage.alt = title;
+  if (viewerCounter) viewerCounter.textContent = `${safeIndex + 1} / ${normalizedImages.length}`;
+  updateRecipeViewerControls(normalizedImages.length, safeIndex);
+  viewer.classList.add("is-open");
+  viewer.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function updateRecipeViewerControls(totalImages, imageIndex) {
+  const viewer = document.getElementById("recipeViewer");
+  const counter = document.getElementById("recipeViewerCounter");
+  if (!viewer) return;
+
+  const previousButton = viewer.querySelector("[data-recipe-viewer-direction='prev']");
+  const nextButton = viewer.querySelector("[data-recipe-viewer-direction='next']");
+  if (previousButton) previousButton.disabled = totalImages <= 1;
+  if (nextButton) nextButton.disabled = totalImages <= 1;
+  if (counter) counter.textContent = `${imageIndex + 1} / ${totalImages}`;
+}
+
+function changeRecipeImage(direction) {
+  const viewer = document.getElementById("recipeViewer");
+  const viewerImage = document.getElementById("recipeViewerImage");
+  if (!viewer || !viewerImage) return;
+
+  const images = JSON.parse(viewer.dataset.images || "[]");
+  if (!images.length) return;
+
+  const currentIndex = Number.parseInt(viewer.dataset.imageIndex || "0", 10);
+  const nextIndex = (currentIndex + direction + images.length) % images.length;
+  viewer.dataset.imageIndex = String(nextIndex);
+  viewerImage.src = images[nextIndex];
+  updateRecipeViewerControls(images.length, nextIndex);
+}
+
+function closeRecipeImage() {
+  const viewer = document.getElementById("recipeViewer");
+  const viewerImage = document.getElementById("recipeViewerImage");
+  if (!viewer || !viewerImage) return;
+
+  viewer.classList.remove("is-open");
+  viewer.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
 }
 
 function closeInlineVideo() {
@@ -836,6 +1062,8 @@ function setupModulePage() {
   if (badge) badge.textContent = selectedModule.subtitle;
   if (totalBooks) totalBooks.textContent = resources.length;
 
+  initializeModuleFiveAccess();
+
   renderBooks(resources);
 
   const grid = document.getElementById("libraryGrid");
@@ -850,6 +1078,35 @@ function setupModulePage() {
       const card = event.target.closest(".book-card");
       if (!card) return;
 
+      if (card.getAttribute("data-recipe-image") === "true") {
+        event.preventDefault();
+        const arrow = event.target.closest("[data-recipe-direction]");
+        const images = JSON.parse(card.getAttribute("data-recipe-images") || "[]");
+        const detailImages = JSON.parse(card.getAttribute("data-recipe-detail-images") || "[]");
+        const image = card.querySelector(".book-cover");
+        const counter = card.querySelector(".recipe-card-counter");
+        let imageIndex = Number.parseInt(card.dataset.recipeIndex || "0", 10);
+
+        if (arrow) {
+          imageIndex = (imageIndex + (arrow.dataset.recipeDirection === "next" ? 1 : -1) + images.length) % images.length;
+          card.dataset.recipeIndex = String(imageIndex);
+          if (image) image.src = images[imageIndex];
+          if (counter) counter.textContent = `${imageIndex + 1} / ${images.length}`;
+          return;
+        }
+
+        const titleNode = card.querySelector(".book-title");
+        const detailIndex = images.length !== detailImages.length
+          ? Math.max(0, imageIndex - 1)
+          : imageIndex;
+        openRecipeImage(
+          titleNode ? titleNode.textContent.trim() : "Detalle de la receta",
+          detailImages,
+          detailIndex
+        );
+        return;
+      }
+
       const isInlineVideo = card.getAttribute("data-inline-video") === "true";
       if (!isInlineVideo) return;
 
@@ -863,6 +1120,20 @@ function setupModulePage() {
 
       if (videoLink) {
         openInlineVideo(resourceTitle, videoLink, inlineKind, inlineSrc);
+      }
+    });
+  }
+
+  const recipeViewerClose = document.getElementById("recipeViewerClose");
+  const recipeViewer = document.getElementById("recipeViewer");
+  if (recipeViewerClose) recipeViewerClose.addEventListener("click", closeRecipeImage);
+  if (recipeViewer) {
+    recipeViewer.addEventListener("click", (event) => {
+      if (event.target === recipeViewer) closeRecipeImage();
+      const viewerArrow = event.target.closest("[data-recipe-viewer-direction]");
+      if (viewerArrow) {
+        event.stopPropagation();
+        changeRecipeImage(viewerArrow.dataset.recipeViewerDirection === "next" ? 1 : -1);
       }
     });
   }
@@ -890,10 +1161,26 @@ document.addEventListener("DOMContentLoaded", () => {
     setupModulePage();
 
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeInlineVideo();
+      const recipeViewer = document.getElementById("recipeViewer");
+      const isRecipeViewerOpen = recipeViewer?.classList.contains("is-open");
+
+      if (isRecipeViewerOpen && (e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+        e.preventDefault();
+        changeRecipeImage(e.key === "ArrowRight" ? 1 : -1);
+        return;
       }
-      if (e.key === "Escape") clearSearch();
+
+      if (e.key === "Escape") {
+        if (isRecipeViewerOpen) {
+          e.preventDefault();
+          closeRecipeImage();
+          return;
+        }
+
+        closeInlineVideo();
+        return;
+      }
+
       if ((e.ctrlKey && e.key === "k") || (e.key === "/" && document.activeElement.tagName !== "INPUT")) {
         e.preventDefault();
         const input = document.getElementById("searchInput");

@@ -154,8 +154,9 @@ body {
 /* Botón de Cerrar Sesión */
 .logout-btn {
   flex-shrink: 0;
-  margin-left: auto;
-  margin-right: 0;
+  position: absolute;
+  top: 20px;
+  right: calc(8px - 10cm);
   background: rgba(255, 255, 255, 0.15);
   color: var(--white);
   border: 2px solid rgba(255, 255, 255, 0.3);
@@ -172,7 +173,6 @@ body {
   backdrop-filter: blur(4px);
   white-space: nowrap;
   height: fit-content;
-  align-self: center;
 }
 
 .logout-btn:hover {
@@ -196,6 +196,8 @@ body {
   }
   
   .logout-btn {
+    top: 16px;
+    right: 8px;
     padding: 10px 12px;
   }
 }
@@ -438,6 +440,149 @@ body[data-page="module"] .results-info {
   color: var(--text-light);
 }
 
+.recipe-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 42, 74, 0.86);
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.recipe-viewer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.modal-open { overflow: hidden; }
+
+.recipe-viewer-panel {
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--white);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(14px) scale(0.97);
+  transition: transform 0.28s ease;
+}
+
+.recipe-viewer.is-open .recipe-viewer-panel {
+  transform: translateY(0) scale(1);
+}
+
+.recipe-viewer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 0 12px;
+}
+
+.recipe-viewer-kicker {
+  color: var(--green-light);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.recipe-viewer-title {
+  margin-top: 3px;
+  color: var(--text-dark);
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.recipe-viewer-stage {
+  position: relative;
+  width: 100%;
+  height: min(72vh, 760px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 8px;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.recipe-viewer-image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  min-width: 0;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background: var(--white);
+}
+
+.recipe-viewer-arrow,
+.recipe-card-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  color: var(--white);
+  background: var(--green-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.recipe-viewer button:focus,
+.recipe-card-arrow:focus,
+.book-card:focus {
+  outline: none;
+}
+
+.recipe-viewer button:focus-visible,
+.recipe-card-arrow:focus-visible,
+.book-card:focus-visible {
+  outline: 2px solid var(--green-soft);
+  outline-offset: 3px;
+}
+
+.recipe-viewer-arrow {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.recipe-viewer-arrow:hover,
+.recipe-card-arrow:hover { background: var(--green-light); }
+
+.recipe-viewer-arrow:disabled,
+.recipe-card-arrow:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.recipe-viewer-counter,
+.recipe-card-counter {
+  color: var(--text-mid);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.recipe-viewer-counter {
+  display: block;
+  margin-top: 8px;
+}
+
 /* =========================================
    GRILLA DE LIBROS
    ========================================= */
@@ -601,9 +746,16 @@ body[data-page="module"] .results-info {
 .book-cover-wrapper {
   position: relative;
   width: 100%;
-  padding-top: 140%; /* Proporción de libro */
+  padding-top: 155%; /* Marco vertical uniforme para las portadas */
   overflow: hidden;
   background: linear-gradient(135deg, var(--cream), var(--cream-dark));
+}
+
+.recipe-cover-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f4ee;
 }
 
 .book-cover {
@@ -613,6 +765,13 @@ body[data-page="module"] .results-info {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+}
+
+.recipe-cover-wrapper .book-cover {
+  object-fit: cover;
+  object-position: center;
+  padding: 0;
+  background: #f7f4ee;
 }
 
 .book-cover-pdf {
@@ -626,6 +785,35 @@ body[data-page="module"] .results-info {
 
 .book-card:hover .book-cover {
   transform: scale(1.06);
+}
+
+.book-card:hover .recipe-cover-wrapper .book-cover {
+  transform: none;
+}
+
+.recipe-card-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.recipe-card-arrow-prev { left: 10px; }
+.recipe-card-arrow-next { right: 10px; }
+
+.recipe-card-counter {
+  position: absolute;
+  right: 50%;
+  bottom: 10px;
+  z-index: 2;
+  padding: 4px 9px;
+  border-radius: 20px;
+  color: var(--white);
+  background: rgba(15, 42, 74, 0.78);
+  transform: translateX(50%);
 }
 
 /* Fallback cuando la imagen no carga */

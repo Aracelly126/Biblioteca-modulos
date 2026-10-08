@@ -16,7 +16,7 @@
   <div id="loginModal" class="login-modal">
     <div class="login-container">
       <div class="login-header">
-        <img src="Innova Food.jpeg" alt="Logo" class="login-logo" />
+        <img src="LOGO.jpeg" alt="Logo" class="login-logo" />
         <h1>Plataforma Institucional</h1>
         <p>Acceso Seguro</p>
       </div>
@@ -51,11 +51,45 @@
     </div>
   </div>
 
+  <div id="moduleFiveLoginModal" class="login-modal hidden">
+    <div class="login-container">
+      <div class="login-header">
+        <img src="LOGO.jpeg" alt="Logo" class="login-logo" />
+        <h1>Acceso al recetario</h1>
+        <p>Ingresa la contraseña autorizada para continuar.</p>
+      </div>
+
+      <form id="moduleFiveLoginForm" class="login-form">
+        <div class="form-group">
+          <label for="moduleFivePasswordInput">Contraseña:</label>
+          <div class="password-wrapper">
+            <input
+              type="password"
+              id="moduleFivePasswordInput"
+              placeholder="Ingresa tu contraseña"
+              required
+              autocomplete="off"
+            />
+            <button type="button" class="toggle-password" id="toggleModuleFivePasswordBtn" onclick="toggleModuleFivePasswordVisibility()">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="login-btn">
+          <i class="fas fa-lock"></i> Acceder
+        </button>
+      </form>
+
+      <div id="moduleFiveLoginError" class="login-error" style="display:none;"></div>
+    </div>
+  </div>
+
   <header class="header">
     <div class="header-bg"></div>
     <div class="header-content">
       <div class="logo-wrapper">
-        <img src="Innova Food.jpeg" alt="Logo" class="logo" />
+        <img src="LOGO.jpeg" alt="Logo" class="logo" />
       </div>
       <div class="header-text">
         <h1 class="header-title" id="moduleTitle">Plataforma Educativa Institucional </h1>
@@ -129,6 +163,30 @@
     <p class="inline-player-help">Puedes usar los controles para pausar, adelantar o ajustar el volumen del video.</p>
   </section>
 
+  <section class="recipe-viewer" id="recipeViewer" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="recipeViewerTitle">
+    <div class="recipe-viewer-panel">
+      <div class="recipe-viewer-header">
+        <div>
+          <p class="recipe-viewer-kicker">Recetario para bares escolares</p>
+          <h2 class="recipe-viewer-title" id="recipeViewerTitle">Detalle de la receta</h2>
+        </div>
+        <button class="inline-player-close" id="recipeViewerClose" type="button" aria-label="Cerrar imagen">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="recipe-viewer-stage">
+        <button class="recipe-viewer-arrow" type="button" data-recipe-viewer-direction="prev" aria-label="Ver imagen anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <img class="recipe-viewer-image" id="recipeViewerImage" alt="" />
+        <button class="recipe-viewer-arrow" type="button" data-recipe-viewer-direction="next" aria-label="Ver imagen siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+      <span class="recipe-viewer-counter" id="recipeViewerCounter">1 / 2</span>
+    </div>
+  </section>
+
   <main class="library-grid" id="libraryGrid"></main>
 
   <div class="no-results" id="noResults" style="display:none">
@@ -139,7 +197,7 @@
 
   <footer class="footer">
     <div class="footer-content">
-      <img src="Innova Food.jpeg" alt="Logo" class="footer-logo" />
+      <img src="LOGO.jpeg" alt="Logo" class="footer-logo" />
       <div class="footer-text">
         <p class="footer-title">Plataforma Educativa Institucional</p>
         <p class="footer-copy">&copy; 2026 · Biblioteca Institucional · Todos los derechos reservados</p>
